@@ -16,23 +16,23 @@ public class Methods extends Config {
 
     WebElement webElem;
 
-    public void marketMethod(){
+    public void marketMethod(String nameOfElement){
 
-        webElem = driver.findElement(By.linkText("Маркет"));
+        webElem = driver.findElement(By.linkText(nameOfElement));
         webElem.click();
 
     }
 
-    public void electronicsSection(){
+    public void electronicsSection(String nameOfElement){
 
-        webElem = driver.findElement(By.linkText("Электроника"));
+        webElem = driver.findElement(By.linkText(nameOfElement));
         webElem.click();
 
     }
 
-    public void tvSelect(){
+    public void tvSelect(String nameOfElement){
 
-        webElem = driver.findElement(By.linkText("Телевизоры"));
+        webElem = driver.findElement(By.linkText(nameOfElement));
         webElem.click();
 
     }
@@ -43,17 +43,17 @@ public class Methods extends Config {
 
     }
 
-    public void priceForm(){
+    public void priceForm(String price){
         webElem = driver.findElement(By.id("gf-pricefrom-var"));
         webElem.click();
-        webElem.sendKeys("20000");
+        webElem.sendKeys(price);
     }
 
-    //корокий метод нахождения веб-элементов, у которых одинаковое имя className
-    public void selectModelRefactMethod(){
+    //короткий метод нахождения веб-элементов, у которых одинаковое имя className
+    public void selectModelRefactMethod(String model1, String model2){
         List<WebElement> element = driver.findElements(By.className("checkbox__label"));
-        String model1 = "LG";
-        String model2 = "Samsung";
+        /*String model1 = "LG";
+        String model2 = "Samsung";*/
         for(WebElement EL:element){
             if ((model1.equals(EL.getText())) || model2.equals(EL.getText())){
                 EL.click();
@@ -62,13 +62,13 @@ public class Methods extends Config {
     }
 
     //длинный метод нахождения веб-элементов, у которых одинаковое имя className
-    public void selectModel(){
+    public void selectModel(String model1, String model2){
 
         List<WebElement> element = driver.findElements(By.className("checkbox__label"));
         List<WebElement> elements = new ArrayList<WebElement>();
         List<String> textElem = new ArrayList<String>();
-        String model1 = "LG";
-        String model2 = "Samsung";
+        /*String model1 = "LG";
+        String model2 = "Samsung";*/
 
         for(WebElement EL:element){
             elements.add(EL);
@@ -90,13 +90,13 @@ public class Methods extends Config {
         }
     }
 
-    public void applyFilterButton(){
+    public void applyFilterButton(String nameOfButton){
         /*webElem = driver.findElement(By.className("filter-panel-aside__apply"));
         webElem.click();*/
         List<WebElement> element = driver.findElements(By.className("button__text"));
         Actions action = new Actions(driver);
         for(WebElement EL:element){
-            if(EL.getText().equals("Применить")){
+            if(EL.getText().equals(nameOfButton)){
                 action.moveToElement(EL).click().perform();
             }
         }

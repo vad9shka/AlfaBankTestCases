@@ -10,13 +10,13 @@ public class Test1 extends Methods {
 
     @Test
     public void testCase1() {
-        marketMethod();
-        electronicsSection();
-        tvSelect();
+        marketMethod("Маркет");
+        electronicsSection("Электроника");
+        tvSelect("Телевизоры");
         largeSearch();
-        priceForm();
-        selectModelRefactMethod();
-        applyFilterButton();
+        priceForm("20000");
+        selectModelRefactMethod("Samsung", "LG");
+        applyFilterButton("Применить");
         sumOfElements();
     }
 }
