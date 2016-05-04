@@ -99,6 +99,10 @@ public class Methods extends Config {
             if(EL.getText().equals(nameOfButton)){
                 action.moveToElement(EL).click().perform();
             }
+            else {
+                saveScreenshot();
+                Assert.fail("Элементы не совпадают " + "Ожидали: " + nameOfButton + "Получили: " + EL.getText());
+            }
         }
     }
 
@@ -124,6 +128,10 @@ public class Methods extends Config {
         webElem = driver.findElement(By.id("header-search"));
         webElem.click();
         webElem.sendKeys(nameElem);
+
+        webElem = driver.findElement(By.cssSelector(".search2 .suggest2-form__button .button__text"));
+
+        /*
         List<WebElement> element = driver.findElements(By.className("button__text"));
         List<WebElement> elements = new ArrayList<WebElement>();
         for(WebElement EL:element){
@@ -132,6 +140,7 @@ public class Methods extends Config {
             }
         }
         webElem = elements.get(0);
+        */
         Actions action = new Actions(driver);//Для клика по веб-элементу, который непрокликивается стандартным способом (это баг chromedriver'а)
         action.moveToElement(webElem).click().perform();
 
@@ -149,8 +158,8 @@ public class Methods extends Config {
             boolean breakIt = true;
             try {
                 webElem = driver.findElement(By.linkText(nameElem));
-                webElem.getText();
-                Assert.assertSame(webElem, nameElem, "Elements are not match!");
+                String elemStr = webElem.getText();
+                Assert.assertEquals(elemStr, nameElem, "Elements are not match!");
             } catch (Exception e) {
                 if (e.getMessage().contains("element is not attached")) {
                     breakIt = false;
