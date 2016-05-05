@@ -174,5 +174,42 @@ public class Methods extends Config {
 
     }
 
+    String str = test("tst");
+    public String test(String url){
+        url=url + "test";
+
+        return url;
+
+    }
+
+    TestClass kj =new TestClass();
+    //создаем конструктор
+    public void kj(TestClass kj) {
+        this.kj = kj;
+    }
+    //обращаемся к методу другого вложенного класса
+    public void jj(){
+        kj.testMethod("jjhijhi");
+    }
+
+
+    public class TestClass
+    {
+        //создаем конструктор класса 
+        private Methods m;
+        public  TestClass(Methods n){
+            this.m = n;
+        }
+
+        public TestClass() {
+
+        }
+
+        public void testMethod(String url){
+            test("dsgfdfg");
+
+        }
+    }
+
 
 }
